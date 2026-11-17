@@ -9,3 +9,33 @@ let cuposDisponibles = 50;
 let entradasVendidas = 0;
 let ingresosAcumulados = 0;
 let numeroCompras = 0;
+// RF02. Menú principal
+let opcion;
+
+do {
+  opcion = prompt(
+    "SISTEMA INNOVA ESPE 2026\n\n" +
+    "1. Comprar entradas\n" +
+    "2. Consultar cupos disponibles\n" +
+    "3. Consultar ingresos acumulados\n" +
+    "4. Salir\n\n" +
+    "Elija una opción:"
+  );
+
+  switch (opcion) {
+    case "1":
+      alert("Aquí irá la compra de entradas");
+      break;
+    case "2":
+      alert("Aquí irá la consulta de cupos");
+      break;
+    case "3":
+      alert("Aquí irá la consulta de ingresos");
+      break;
+    case "4":
+      alert("Gracias por usar el sistema. ¡Hasta pronto!");
+      break;
+    default:
+      alert("Opción inválida. Ingrese un número del 1 al 4.");
+  }
+} while (opcion !== "4");
