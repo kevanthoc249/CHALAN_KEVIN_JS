@@ -2,7 +2,9 @@
 
 Prototipo en JavaScript nativo para registrar la compra de entradas del evento ficticio Innova ESPE 2026, calcular descuentos y controlar los cupos disponibles.
 
-**Autor:** Kevin Chalan
+**Autor:** Kevin Anthony Chalan
+**NRC:**  36875
+
 **Universidad:** Universidad de las Fuerzas Armadas ESPE
 
 ## Funcionalidades
