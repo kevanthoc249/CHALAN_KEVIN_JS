@@ -12,6 +12,97 @@ let numeroCompras = 0;
 // RF02. Menú principal
 let opcion;
 
+// RF03. Compra de entradas
+function comprarEntradas() {
+    // 1. Nombre del comprador
+    const nombre = prompt("Ingrese el nombre del comprador:");
+    if (nombre === null || nombre.trim() === "") {
+        alert("Compra rechazada: el nombre no puede estar vacío.");
+        return;
+    }
+
+    // 2. Tipo de participante
+    const tipoIngresado = prompt(
+        "Tipo de participante:\n\n" +
+        "1. Estudiante\n" +
+        "2. Docente\n" +
+        "3. Público general\n\n" +
+        "Elija una opción (1, 2 o 3):"
+    );
+
+    let tipo;
+    let porcentajeDescuento;
+
+    if (tipoIngresado === "1") {
+        tipo = "Estudiante";
+        porcentajeDescuento = DESCUENTO_ESTUDIANTE;
+    } else if (tipoIngresado === "2") {
+        tipo = "Docente";
+        porcentajeDescuento = DESCUENTO_DOCENTE;
+    } else if (tipoIngresado === "3") {
+        tipo = "Público general";
+        porcentajeDescuento = DESCUENTO_GENERAL;
+    } else {
+        alert("Compra rechazada: tipo de participante inválido.");
+        return;
+    }
+
+    // 3. Cantidad de entradas
+    const cantidadIngresada = prompt(
+        "Cantidad de entradas (entre 1 y " + MAX_ENTRADAS_COMPRA + "):"
+    );
+
+    if (cantidadIngresada === null || cantidadIngresada.trim() === "") {
+        alert("Compra rechazada: debe ingresar una cantidad.");
+        return;
+    }
+
+    const cantidad = Number(cantidadIngresada);
+
+    // 4. Validar número entero entre 1 y 5
+    if (!Number.isInteger(cantidad) || cantidad < 1 || cantidad > MAX_ENTRADAS_COMPRA) {
+        alert(
+            "Compra rechazada: la cantidad debe ser un número entero entre 1 y " +
+            MAX_ENTRADAS_COMPRA + "."
+        );
+        return;
+    }
+
+    // 5. Comprobar cupos suficientes
+    if (cantidad > cuposDisponibles) {
+        alert(
+            "Compra rechazada: no hay cupos suficientes.\n" +
+            "Cupos disponibles: " + cuposDisponibles
+        );
+        return;
+    }
+
+    // 6. Cálculos
+    const subtotal = cantidad * PRECIO_ENTRADA;
+    const descuento = subtotal * porcentajeDescuento;
+    const total = subtotal - descuento;
+
+    // 7. Actualizar datos (solo si la compra es válida)
+    cuposDisponibles = cuposDisponibles - cantidad;
+    entradasVendidas = entradasVendidas + cantidad;
+    ingresosAcumulados = ingresosAcumulados + total;
+    numeroCompras = numeroCompras + 1;
+
+    // 8. Resumen de compra
+    const resumen =
+        "RESUMEN DE COMPRA\n\n" +
+        "Nombre: " + nombre.trim() + "\n" +
+        "Tipo de participante: " + tipo + "\n" +
+        "Cantidad de entradas: " + cantidad + "\n\n" +
+        "Subtotal: $" + subtotal.toFixed(2) + "\n" +
+        "Descuento (" + (porcentajeDescuento * 100) + " %): $" + descuento.toFixed(2) + "\n" +
+        "Total a pagar: $" + total.toFixed(2) + "\n\n" +
+        "Compra realizada exitosamente.\n" +
+        "Cupos restantes: " + cuposDisponibles;
+
+    alert(resumen);
+    console.log(resumen);
+}
 do {
     opcion = prompt(
         "SISTEMA INNOVA ESPE 2026\n\n" +
@@ -24,7 +115,7 @@ do {
 
     switch (opcion) {
         case "1":
-            alert("Aquí irá la compra de entradas");
+            comprarEntradas();
             break;
         case "2":
             let mensajeDisponibilidad;
