@@ -117,7 +117,7 @@ do {
         case "1":
             comprarEntradas();
             break;
-        case "2":
+        case "2": {
             let mensajeDisponibilidad;
 
             if (cuposDisponibles > 10) {
@@ -135,6 +135,7 @@ do {
             );
             console.log("Cupos disponibles:", cuposDisponibles, "-", mensajeDisponibilidad);
             break;
+        }
         case "3": {
             alert(
                 "INGRESOS ACUMULADOS\n\n" +
