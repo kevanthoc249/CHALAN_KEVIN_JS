@@ -147,9 +147,18 @@ do {
             console.log("Compras realizadas:", numeroCompras);
             break;
         }
-        case "4":
-            alert("Gracias por usar el sistema. ¡Hasta pronto!");
+        case "4": {
+            const resumenFinal =
+                "RESUMEN FINAL\n\n" +
+                "Entradas vendidas: " + entradasVendidas + "\n" +
+                "Ingresos acumulados: $" + ingresosAcumulados.toFixed(2) + "\n" +
+                "Compras realizadas: " + numeroCompras + "\n" +
+                "Cupos restantes: " + cuposDisponibles + "\n\n" +
+                "Gracias por usar el sistema Innova ESPE 2026.";
+            alert(resumenFinal);
+            console.log(resumenFinal);
             break;
+        }
         default:
             alert("Opción inválida. Ingrese un número del 1 al 4.");
     }
