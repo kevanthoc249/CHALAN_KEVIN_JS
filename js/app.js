@@ -44,9 +44,18 @@ do {
             );
             console.log("Cupos disponibles:", cuposDisponibles, "-", mensajeDisponibilidad);
             break;
-        case "3":
-            alert("Aquí irá la consulta de ingresos");
+        case "3": {
+            alert(
+                "INGRESOS ACUMULADOS\n\n" +
+                "Total de entradas vendidas: " + entradasVendidas + "\n" +
+                "Total de ingresos: $" + ingresosAcumulados.toFixed(2) + "\n" +
+                "Número de compras realizadas: " + numeroCompras
+            );
+            console.log("Entradas vendidas:", entradasVendidas);
+            console.log("Ingresos acumulados: $" + ingresosAcumulados.toFixed(2));
+            console.log("Compras realizadas:", numeroCompras);
             break;
+        }
         case "4":
             alert("Gracias por usar el sistema. ¡Hasta pronto!");
             break;
